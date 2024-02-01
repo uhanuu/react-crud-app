@@ -8,7 +8,7 @@ export default function Lists({
   setExpenseItem,
   setCost,
   setEditStatus,
-  setRemoveStatus,
+  setBannerRemoveStatus,
   setItemData,
   setFindItemKey,
 }) {
@@ -25,7 +25,7 @@ export default function Lists({
             setExpenseItem={setExpenseItem}
             itemData={itemData}
             setEditStatus={setEditStatus}
-            setRemoveStatus={setRemoveStatus}
+            setBannerRemoveStatus={setBannerRemoveStatus}
             setItemData={setItemData}
             setFindItemKey={setFindItemKey}
           />

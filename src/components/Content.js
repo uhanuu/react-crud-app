@@ -12,7 +12,7 @@ export default function Content({
   cost,
   setCost,
   setEditStatus,
-  setRemoveStatus,
+  setBannerRemoveStatus,
   setItemData,
   editStatus,
   setFindItemKey,
@@ -33,7 +33,7 @@ export default function Content({
         setExpenseItem={setExpenseItem}
         setCost={setCost}
         setEditStatus={setEditStatus}
-        setRemoveStatus={setRemoveStatus}
+        setBannerRemoveStatus={setBannerRemoveStatus}
         setItemData={setItemData}
         setFindItemKey={setFindItemKey}
       />

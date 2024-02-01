@@ -13,9 +13,10 @@ function App() {
   const [expenseItem, setExpenseItem] = useState("");
   const [cost, setCost] = useState(0);
   const [findItemKey, setFindItemKey] = useState("");
-  const [createStatus, setCreateStatus] = useState(false);
   const [editStatus, setEditStatus] = useState(false);
-  const [removeStatus, setRemoveStatus] = useState(false);
+  const [bannerRemoveStatus, setBannerRemoveStatus] = useState(false);
+  const [bannerEditStatus, setBannerEditStatus] = useState(false);
+  const [bannerCreateState, setBannerCreateState] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ function App() {
     // 원래 있던 할 일에 새로운 할 일 더해주기
     if (editStatus) {
       setEditStatus((prev) => !prev);
+      setBannerEditStatus((prev) => !prev);
       const newItemData = itemData.map((item) => {
         if (item.id === findItemKey) {
           return newItem;
@@ -38,7 +40,7 @@ function App() {
       setItemData([...newItemData]);
       localStorage.setItem("itemData", JSON.stringify([...newItemData]));
     } else {
-      setCreateStatus((prev) => !prev);
+      setBannerCreateState((prev) => !prev);
       setItemData((prev) => [...prev, newItem]);
       localStorage.setItem("itemData", JSON.stringify([...itemData, newItem]));
     }
@@ -50,16 +52,19 @@ function App() {
 
   const handleRemoveClick = () => {
     setItemData([]);
+    setBannerRemoveStatus((prev) => !prev);
     localStorage.setItem("itemData", JSON.stringify([]));
   };
 
   return (
     <div className="App">
       <ItemStatus
-        createStatus={createStatus}
-        editStatus={editStatus}
-        removeStatus={removeStatus}
-        setRemoveStatus={setRemoveStatus}
+        bannerEditStatus={bannerEditStatus}
+        setBannerEditStatus={setBannerEditStatus}
+        bannerCreateState={bannerCreateState}
+        setBannerCreateState={setBannerCreateState}
+        bannerRemoveStatus={bannerRemoveStatus}
+        setBannerRemoveStatus={setBannerRemoveStatus}
       />
       <h1>예산 계산기</h1>
       <Content
@@ -71,7 +76,7 @@ function App() {
         cost={cost}
         setCost={setCost}
         setEditStatus={setEditStatus}
-        setRemoveStatus={setRemoveStatus}
+        setBannerRemoveStatus={setBannerRemoveStatus}
         setItemData={setItemData}
         editStatus={editStatus}
         setFindItemKey={setFindItemKey}

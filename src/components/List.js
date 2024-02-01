@@ -9,7 +9,7 @@ export default function List({
   setExpenseItem,
   itemData,
   setEditStatus,
-  setRemoveStatus,
+  setBannerRemoveStatus,
   setItemData,
   setFindItemKey,
 }) {
@@ -24,7 +24,7 @@ export default function List({
   const handleRemoveClick = () => {
     const newItemData = itemData.filter((item) => item.id !== id);
     setItemData(newItemData);
-    setRemoveStatus((prev) => !prev);
+    setBannerRemoveStatus((prev) => !prev);
     localStorage.setItem("itemData", JSON.stringify([...newItemData]));
   };
 
